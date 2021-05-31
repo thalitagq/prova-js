@@ -1,0 +1,133 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+  color: #868686;
+}
+
+.container{
+  display: flex;
+  padding: 2rem;
+  height: 100vh;
+}
+
+.title{
+  font-weight: 300;
+  font-style: italic;
+  font-size: 24px;
+}
+
+.circleNumber{
+  width: 63px;
+  height: 63px;
+  background: #ADC0C4 0% 0% no-repeat padding-box;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 50%;
+  line-height: 0;
+  cursor: pointer;
+  border: 0;
+  margin-bottom: 20px;
+}
+
+h1{
+  font-weight: 300;
+}
+
+h3{
+  font-size: 17px;
+  font-style: italic;
+  letter-spacing: 0px;
+  color: #868686;
+}
+
+.betButton{
+  border: 2px solid;
+  height: 34px;
+  font-weight: 600;
+  font-style: italic;
+  background-color: transparent;
+  border-radius: 100px;
+  padding: 5px 10px;
+  line-height: 0;
+  cursor: pointer;
+  margin-right: 25px;
+}
+
+.cart{
+  background-color: #fff;
+  border: 1px solid #E2E2E2;
+  padding: 20px;
+  width: 320px;
+  border-radius: 10px;
+}
+
+.bet{
+  font-size: 15px;
+  min-height: 60px;
+  border-left: 4px solid;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.betTitle{
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.actionButton{
+  background-color: #fff;
+  color: #27C383;
+  border: 1px solid #27C383;
+  height: 52px;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.addToCartButton{
+  background-color: #27C383;
+  color: #fff;
+  border-radius: 10px;
+  height: 52px;
+  padding: 0 10px;
+  border: 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.actionButtonsRow{
+  display: flex;
+  justify-content: space-between;
+}
+
+.numbersContainer{
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+}
+
+.betRow{
+  display: grid;
+  grid-template-columns: 30px auto;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.betRow img{
+  cursor: pointer;
+}
+
+.gamesButtons{
+  margin: 20px 0;
+}

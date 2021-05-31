@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TGL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <section style="width: 690px; margin-right: 20px;">
+      <h1 class="title" style="margin-bottom: 20px;"><strong>NEW BET</strong> FOR <span data-js="bet-type"></span></h1>
+      <h3>Choose a game</h3>
+      <div data-js="gamesButtons" class="gamesButtons">
+      </div>
+      <p data-js="description" style="margin-bottom: 20px;"></p>
+      <div data-js="numbers" class="numbersContainer"></div>
+      <div class="actionButtonsRow">
+        <div>
+          <button type="button" data-js="completeGame" class="actionButton">Complete Game</button>
+          <button type="button" data-js="clearGame" class="actionButton">Clear game</button>
+        </div>
+        <button type="button" data-js="addToCart" class="addToCartButton"><img src="/images/cart.png"/>Add to cart</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="cart">
+        <h1 class="title"><strong>CART</strong></h1>
+        <div data-js="bets"></div>
+        <h1 class="title"><strong>CART</strong> TOTAL: R$ <span data-js="total"></span></h1>
+      </div>
+    </section>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
