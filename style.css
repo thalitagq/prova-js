@@ -8,8 +8,9 @@
 
 .container{
   display: flex;
-  padding: 2rem;
-  height: 100vh;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 3rem 1rem 1rem 1rem;
 }
 
 .title{
@@ -53,7 +54,7 @@ h3{
   padding: 5px 10px;
   line-height: 0;
   cursor: pointer;
-  margin-right: 25px;
+  margin: 0 25px 10px 0;
 }
 
 .cart{
@@ -109,12 +110,14 @@ h3{
 
 .actionButtonsRow{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .numbersContainer{
-  display: grid;
-  grid-template-columns: repeat(10, auto);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
 }
 
 .betRow{
@@ -130,4 +133,23 @@ h3{
 
 .gamesButtons{
   margin: 20px 0;
+}
+
+.sectionBet{
+  max-width: 70%;
+  margin: 0 20px 20px 20px
+}
+
+@media (max-width: 700px) {
+  .container{
+    justify-content: center;
+  }
+
+  .sectionBet{
+    max-width: 100%;
+  }
+
+  .numbersContainer{
+    justify-content: center;
+  }
 }

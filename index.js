@@ -4,6 +4,7 @@
   var games = [];
   var currentBet = [];
   var currentGame = {};
+  var total = 0;
   var $gamesButtons = doc.querySelector('[data-js="gamesButtons"]');
   var $numbers = doc.querySelector('[data-js="numbers"]');
   var $bets = doc.querySelector('[data-js="bets"]');
@@ -28,6 +29,8 @@
   function populateGame(game) {
     var $description = doc.querySelector('[data-js="description"]');
     var $betType = doc.querySelector('[data-js="bet-type"]');
+    doc.querySelector(`[data-js='${game.type}']`)
+          .setAttribute('style', `background-color: ${game.color}; color: #fff; border-color: ${game.color}`)
     Object.assign(currentGame, game);
     $betType.innerText = game.type;
     $description.innerText = game.description;
@@ -53,7 +56,7 @@
   function setGamesInfo() {
     games.forEach(function(game){
       $gamesButtons.insertAdjacentHTML(
-        'afterbegin', 
+        'beforeend', 
         `<button type='button' class='betButton' style='border-color:${game.color}; color: ${game.color}' data-js='${game.type}'>
           ${game.type}
         </button>`
@@ -66,6 +69,9 @@
   function setClickEventBetButtons() {
     Array.prototype.forEach.call($gamesButtons.childNodes, function (button) {
       button.addEventListener('click', function () {
+        if (button.dataset.js === currentGame.type) return;
+        doc.querySelector(`[data-js='${currentGame.type}']`)
+              .setAttribute('style', `background-color: transparent; color: ${currentGame.color}; border-color: ${currentGame.color}`);
         populateGame(returnGame(button.dataset.js)[0]);
       })
     })
@@ -105,18 +111,22 @@
       return alert('Complete o jogo para continuar!')
     }
     createBetHtml();
-    currentBet = []; 
+    total += currentGame.price;
+    doc.querySelector('[data-js="empty-message"]').setAttribute('style', 'display: none');
+    doc.querySelector('[data-js="total"]').innerText = String(total.toFixed(2)).replace('.', ',');
+    clearGame();
   }
 
   function createBetHtml() {
     var betColor = returnGame(currentGame.type)[0].color;
-
     $bets.insertAdjacentHTML('afterbegin',
-      `<div class='betRow'>
+      `<div class='betRow' data-js='bet${currentGame.type}'>
         <img src='/images/delete.png'/>
         <div class='bet' style='border-color: ${betColor}; color: ${betColor}'>
           <span>${currentBet.sort((a, b) => a - b).join(', ')}</span>
-          <p style='color: ${betColor}'>${currentGame.type}</p>
+          <div style="display: flex">
+            <p style='color: ${betColor}; margin-right: 20px'>${currentGame.type}</p>
+            <span style='font-weight: 500'>${String(currentGame.price.toFixed(2)).replace('.', ',')}</span></div>
         </div>
       </div>`
     )
@@ -128,9 +138,15 @@
       return Array.prototype.filter.call(bet.children, function (betItem) {        
         return betItem.tagName === 'IMG';
       })
-    }).forEach(function (imgTag) {
+    }).every(function (imgTag) {
         imgTag[0].addEventListener('click',function () {
+          total -= returnGame(imgTag[0].parentElement.dataset.js.replace('bet', ''))[0].price;
+          doc.querySelector('[data-js="total"]').innerText = String(total.toFixed(2)).replace('.', ',');
           imgTag[0].parentElement.remove();
+        
+          if (total === 0)
+            doc.querySelector('[data-js="empty-message"]').setAttribute('style', 'display: block');
+          return false;
       })
     })
   }
@@ -141,7 +157,6 @@
       randomBet = Math.ceil(Math.random() * (currentGame.range))
       if(!isInCurrentBet(randomBet))
         doc.querySelector(`[data-js='${randomBet}']`).click();
-      // currentBet.push(randomBet);
     }
   }
 

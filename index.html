@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="container">
-    <section style="width: 690px; margin-right: 20px;">
+    <section class="sectionBet">
       <h1 class="title" style="margin-bottom: 20px;"><strong>NEW BET</strong> FOR <span data-js="bet-type"></span></h1>
       <h3>Choose a game</h3>
       <div data-js="gamesButtons" class="gamesButtons">
@@ -17,7 +17,7 @@
       <p data-js="description" style="margin-bottom: 20px;"></p>
       <div data-js="numbers" class="numbersContainer"></div>
       <div class="actionButtonsRow">
-        <div>
+        <div style="margin-bottom: 10px;">
           <button type="button" data-js="completeGame" class="actionButton">Complete Game</button>
           <button type="button" data-js="clearGame" class="actionButton">Clear game</button>
         </div>
@@ -27,9 +27,10 @@
 
     <section>
       <div class="cart">
-        <h1 class="title"><strong>CART</strong></h1>
+        <h1 class="title" style="margin-bottom: 20px;"><strong>CART</strong></h1>
         <div data-js="bets"></div>
-        <h1 class="title"><strong>CART</strong> TOTAL: R$ <span data-js="total"></span></h1>
+        <div data-js='empty-message' style="margin: 20px 0;">Carrinho vazio</div>
+        <h1 class="title" style="margin-top: 20px;"><strong>CART</strong> TOTAL: R$ <span data-js="total">0,00</span></h1>
       </div>
     </section>
   </div>
